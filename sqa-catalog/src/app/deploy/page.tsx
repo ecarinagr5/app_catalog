@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 
 export default function Deploy() {
-  const [uploading, setUploading] = useState(false);
+  const [uploading,] = useState(false);
 
   const uploadFiles = useCallback(async () => {
     console.log("Uploading files...");

@@ -5,14 +5,16 @@ import { useState } from "react";
 
 
 export default function Home() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState("");
   const [dragging, setDragging] = useState(false);
-  
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setFile(event.target.files[0]);
+    }
   };
 
   const handleUpload = async () => {
@@ -34,13 +36,13 @@ export default function Home() {
         setMessage("Upload failed");
       }
     } catch (error) {
-      setMessage(``);
+      setMessage(`Error: ${error}`);
     } finally {
       setUploading(false);
     }
   };
 
-  const handleDragOver = (event) => {
+  const handleDragOver = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     setDragging(true);
   };
@@ -49,11 +51,12 @@ export default function Home() {
     setDragging(false);
   };
 
-  const handleDrop = (event) => {
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     setDragging(false);
-    if (event.dataTransfer.files.length) {
-      setFile(event.dataTransfer.files[0]);
+    const files = event.dataTransfer.files;
+    if (files.length > 0) {
+      setFile(files[0]);
     }
   };
 
