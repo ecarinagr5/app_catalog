@@ -2,12 +2,8 @@ import { NextResponse } from 'next/server';
 import { BlobServiceClient, StorageSharedKeyCredential } from '@azure/storage-blob';
 
 // Azure Storage Credentials
-const AZURE_STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME; // Your Azure Storage Account Name
-const AZURE_STORAGE_ACCOUNT_KEY = process.env.AZURE_STORAGE_ACCOUNT_KEY;   // Your Azure Storage Account Key
-// const AZURE_STORAGE_ACCOUNT_NAME = "carinatestqa12"
-// const AZURE_STORAGE_ACCOUNT_KEY = "RJS0LB6o2LRr9wLnUGmZfYHpUELx19YWGR8JnQ614E6GGJri24SWlUqfOgfO+uUSuyVA6XkzKKJL+AStnAWaJQ=="
-//const AZURE_STORAGE_ACCOUNT_NAME = "fc4d63ed66f784fbcb89e7"
-//const AZURE_STORAGE_ACCOUNT_KEY = "PoL7CBXMPfY/6VPyCLb575XwdAApi5ykkt0jI8tBqLgh8aQKRzwceHS5Y3EP2JIuX5Lt3w+teQRh+AStbavU"
+const AZURE_STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME; 
+const AZURE_STORAGE_ACCOUNT_KEY = process.env.AZURE_STORAGE_ACCOUNT_KEY;  
 const CONTAINER_NAME = "csv-uploads";
 
 export async function OPTIONS() {
